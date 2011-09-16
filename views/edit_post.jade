@@ -1,0 +1,20 @@
+h1= title
+form(method='post')
+	.formElement
+		label Title
+		input(type='text', value=post.title, name='title')/
+		- if (post.errors.title)
+			span.error= post.errors.title		
+	.formElement
+		label Author
+		input(type='text', value=post.author, name='author')/	
+		- if (post.errors.author)
+			span.error= post.errors.author		
+	.formElement
+		label Body
+		textarea(name='body')= value=post.body
+		- if (post.errors.body)
+			span.error= post.errors.body	
+	.formElement
+		input(type='submit', value="Save")
+		

@@ -1,0 +1,10 @@
+h1= title
+- if (posts.length > 0)
+	ul
+	-each post in posts
+		li
+			a(href="/view/#{post._id}") #{post.title}
+- else
+	p No posts yet
+	
+a(href="/add") Add post

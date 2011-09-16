@@ -1,0 +1,27 @@
+h1= title
+p.author Written by #{post.author}
+.post-body= post.body
+
+#comments
+	- if (post.comments.length > 0)
+		ul
+			-each comment in post.comments
+				li
+					p.author Posted by #{comment.author} on #{comment.date_posted}
+					p.comment= comment.body
+	- else
+		p No comments
+	form#add-comment(method='post', action="/comment/add/#{post._id}")
+		fieldset
+			legend Add Comment
+			.formElement
+				label Author
+				input(type='text', value=newComment.author, name='author')/
+				- if (newComment.errors.author)
+					span.error= newComment.errors.author		
+			.formElement
+				textarea(name='body')= newComment.body
+				- if (newComment.errors.body)
+					span.error= newComment.errors.body
+			.formElement
+				input(type='submit', value="Save")
